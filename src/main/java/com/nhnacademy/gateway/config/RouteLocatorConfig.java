@@ -20,7 +20,7 @@ public class RouteLocatorConfig {
                 )
                 .route("delivery-service",
                         p -> p.path("/delivery/**").and()
-                                .uri("http://DELIVERY-SERVICE")
+                                .uri("lb://DELIVERY-SERVICE")
                 )
                 .build();
 
