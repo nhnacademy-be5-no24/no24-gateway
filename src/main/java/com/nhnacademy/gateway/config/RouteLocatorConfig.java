@@ -10,9 +10,17 @@ public class RouteLocatorConfig {
     @Bean
     public RouteLocator myRoute(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("hello-service",
-                        p->p.path("/hello").and()
-                                .uri("lb://HELLO-SERVICE")
+                .route("shop-service",
+                        p->p.path("/shop").and()
+                                .uri("lb://SHOP-SERVICE")
+                )
+                .route("auth-service",
+                        p -> p.path("/auth").and()
+                                .uri("http://AUTH-SERVICE")
+                )
+                .route("delivery-service",
+                        p -> p.path("/delivery").and()
+                                .uri("http://DELIVERY-SERVICE")
                 )
                 .build();
 
