@@ -11,15 +11,15 @@ public class RouteLocatorConfig {
     public RouteLocator myRoute(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("shop-service",
-                        p->p.path("/shop").and()
+                        p->p.path("/shop/**").and()
                                 .uri("lb://SHOP-SERVICE")
                 )
                 .route("auth-service",
-                        p -> p.path("/auth").and()
-                                .uri("http://AUTH-SERVICE")
+                        p -> p.path("/auth/**").and()
+                                .uri("lb://AUTH-SERVICE")
                 )
                 .route("delivery-service",
-                        p -> p.path("/delivery").and()
+                        p -> p.path("/delivery/**").and()
                                 .uri("http://DELIVERY-SERVICE")
                 )
                 .build();
