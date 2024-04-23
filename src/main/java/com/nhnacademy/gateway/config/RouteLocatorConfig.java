@@ -15,7 +15,11 @@ public class RouteLocatorConfig {
                                 .uri("lb://SHOP-SERVICE")
                 )
                 .route("auth-service",
-                        p -> p.path("/auth/**").and()
+                        p -> p.path("/auth/**")
+                                .or()
+                                .path("/login/**")
+                                .or()
+                                .path("/logout/**")
                                 .uri("lb://AUTH-SERVICE")
                 )
                 .route("delivery-service",
